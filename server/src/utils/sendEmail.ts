@@ -1,4 +1,3 @@
-
 import nodemailer from "nodemailer";
 
 // async..await is not allowed in global scope, must use a wrapper
@@ -14,8 +13,8 @@ export async function sendEmail(to: string, html: string) {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'fwdogdg4udrt2h65@ethereal.email', // generated ethereal user
-      pass: '3kkXeS5N4Q94A4VGJj', // generated ethereal password
+      user: "fwdogdg4udrt2h65@ethereal.email", // generated ethereal user
+      pass: "3kkXeS5N4Q94A4VGJj", // generated ethereal password
     },
   });
 
@@ -24,7 +23,7 @@ export async function sendEmail(to: string, html: string) {
     from: '"Fred Foo 👻" <foo@example.com>', // sender address
     to: to, // list of receivers
     subject: "Change Password", // Subject line
-    html: html
+    html: html,
   });
 
   console.log("Message sent: %s", info.messageId);

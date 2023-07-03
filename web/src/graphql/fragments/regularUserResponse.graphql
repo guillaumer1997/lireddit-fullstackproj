@@ -1,10 +1,10 @@
 fragment RegularUserResponse on UserResponse {
-    user{
-        id
-        username
-    }
-    errors {
-        field
-        message
-    }
+  user {
+    id
+    username
+  }
+  errors {
+    field
+    message
+  }
 }

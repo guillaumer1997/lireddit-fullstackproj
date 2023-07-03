@@ -1,11 +1,6 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import {
-  Box,
-  Button,
-  Flex,
-  Link,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Link } from "@chakra-ui/react";
 
 import { Wrapper } from "../components/Wrapper";
 import { InputField } from "../components/InputField";
@@ -17,27 +12,22 @@ import { withUrqlClient } from "next-urql";
 
 interface loginProps {}
 
-
 const Login: React.FC<loginProps> = ({}) => {
-  const [, login] = useLoginMutation()
+  const [, login] = useLoginMutation();
   return (
     <Wrapper variant="small">
       <Formik
         initialValues={{ usernameOrEmail: "", password: "" }}
-        onSubmit={async (values, {setErrors}) => {
+        onSubmit={async (values, { setErrors }) => {
           const response = await login(values);
-          if(response.data?.login.errors){
-            setErrors(
-              toErrorMap(response.data?.login.errors)  
-            )
-          }
-          else if (response.data.login.user){
+          if (response.data?.login.errors) {
+            setErrors(toErrorMap(response.data?.login.errors));
+          } else if (response.data.login.user) {
             //this worked
-            if(typeof router.query.next === "string"){
+            if (typeof router.query.next === "string") {
               router.push(router.query.next);
-            }
-            else{
-              router.push('/');
+            } else {
+              router.push("/");
             }
           }
         }}
@@ -58,13 +48,15 @@ const Login: React.FC<loginProps> = ({}) => {
               />
             </Box>
             <Flex mt={2}>
-              <Link href="/forgot-password" ml="auto">forgot password?</Link>
+              <Link href="/forgot-password" ml="auto">
+                forgot password?
+              </Link>
             </Flex>
             <Button
               mt={4}
               type="submit"
               isLoading={isSubmitting}
-              color={'teal'}
+              color={"teal"}
             >
               login
             </Button>

@@ -28,7 +28,7 @@ const main = async () => {
   const app = express();
   const redisClient = new redis(process.env.REDIS_URL);
   const RedisStore = require("connect-redis").default;
-  app.set("proxy", 1);
+  app.set("trust proxy", 1);
 
   let redisStore = new RedisStore({
     client: redisClient,
